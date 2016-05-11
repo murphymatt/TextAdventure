@@ -1,10 +1,5 @@
-/Command.class
-/Direction.class
-/Inventory.class
-/Item.class
-/Obj.class
+/Environment/
+/Items/
 /Parser.class
-/Room.class
-/Subject.class
 /TextAdventure.class
-/Verb.class
+/UserInput/
