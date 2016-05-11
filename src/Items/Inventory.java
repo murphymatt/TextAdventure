@@ -32,11 +32,8 @@ public class Inventory {
 	public void use(String item) {
 		if (items.containsKey(item)) {
 			System.out.println("using " + item);
+		} else {
+			System.out.println("There is no " + item + " to use.");
 		}
-	}
-	
-	public static void main(String[] args){
-		Inventory inv = new Inventory();
-		inv.printItems();
-	}
+	} // void use (String item)
 }
