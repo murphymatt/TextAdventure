@@ -5,22 +5,35 @@ import java.util.List;
 public class Room {
 
 	// fields
+	
+	// associated descriptions of the room
 	String name;
 	String description;
+	
+	// adjacent rooms to current room
 	Room north;
 	Room south;
 	Room east;
 	Room west;
+	
+	// user can pick up items
 	List<String> items;
 	
+	// user can interact with objects
+	List<String> objects;
+	
 	// constructor
-	public Room(String name, String description, Room north, Room south, Room east, Room west) {
+	public Room(String name, String description, 
+			Room north, Room south, Room east, Room west,
+			List<String> items, List<String> objects) {
 		this.name = name;
 		this.description = description;
 		this.north = north;
 		this.south = south;
 		this.east = east;
 		this.west = west;
+		this.items = items;
+		this.objects = objects;
 	}
 	
 	// methods
