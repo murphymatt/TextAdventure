@@ -2,6 +2,8 @@ package Environment;
 
 import java.util.List;
 
+import Items.Inventory;
+
 public class Room {
 
 	// fields
@@ -9,6 +11,7 @@ public class Room {
 	// associated descriptions of the room
 	String name;
 	String description;
+	Inventory userInventory;
 	
 	// adjacent rooms to current room
 	Room north;
@@ -41,6 +44,12 @@ public class Room {
 		System.out.println("The room is rather " + description + ".");
 	} // void describeRoom()
 	
+	// user actions
+	
+	public void waitTurn() {
+		System.out.println("You wait while the people around you continue to party.");
+	} // void waitTurn()
+	
 	public Room goTo(String direction) {
 		if (direction.equals("north")) {
 			return north;
@@ -55,14 +64,38 @@ public class Room {
 		}
 	} // Room goTo(String direction)
 	
-	public String pickUp(String item) {
+	public void talkTo(String object) {
+		if (this.objects.contains(object)) {
+			System.out.println("You talk to " + object + ".");
+		} else {
+			System.out.println("There is no " + object + " to talk to.");
+		}
+	} // void talkTo(String object)
+	
+	public void pickUp(String item) {
 		if (items.contains(item)) {
 			System.out.println("You picked up the " + item + ".");
 			items.remove(item);
-			return item;
+			userInventory.addItem(item);
 		} else {
 			System.out.println("There is no " + item + " in the " + name + ".");
-			return null;
 		}
 	} // String pickUp(String item)
+	
+	public void attack(String object) {
+		if (this.objects.contains(object)) {
+			System.out.println("You attack " + object + ".");
+		} else {
+			System.out.println("There is no " + object + " to attack.");
+		}
+	} // void attack(String object)
+	
+	public void lookAt(String object) {
+		if (this.objects.contains(object)) {
+			System.out.println("You look at " + object + ".");
+		} else {
+			System.out.println("There is no " + object + " in the room");
+		}
+	} // void lookAt(String object)
+	
 }

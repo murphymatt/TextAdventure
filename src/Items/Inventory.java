@@ -5,8 +5,10 @@ import java.util.Map;
 
 public class Inventory {
 
+	// fields
 	Map<String, Boolean> items;
 
+	// constructor
 	public Inventory() {
 		items = new HashMap<>();
 		items.put("keg", false);
@@ -18,7 +20,8 @@ public class Inventory {
 		items.put("dildo", false);
 	}
 
-	public void printItems() {
+	// methods
+	public void showInventory() {
 		System.out.println("Items in your inventory: ");
 		int i = 1;
 		for (String item : items.keySet()) {
@@ -27,13 +30,18 @@ public class Inventory {
 				i++;
 			}
 		}
-	}
+	} // void showInventory()
+	
+	public void addItem(String item) {
+		items.put(item, true);
+	} // void addItem(String item)
 	
 	public void use(String item) {
 		if (items.containsKey(item)) {
-			System.out.println("using " + item);
+			System.out.println("You use " + item + ".");
 		} else {
 			System.out.println("There is no " + item + " to use.");
 		}
-	} // void use (String item)
+	} // void use(String item)
+	
 }
