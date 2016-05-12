@@ -18,7 +18,7 @@ public class Parser {
     public void readInput() {
 	String input = in.nextLine().toLowerCase();
 
-	//choose command based on inputted text
+	// choose command based on inputted text
 	if (input.contains("wait")) {
 	    currentRoom.waitTurn();
 	} else if (input.contains("go")) {
