@@ -1,32 +1,33 @@
-package Environment;
+package environment;
 
 import java.util.List;
 
-import Items.Inventory;
-import Items.Item;
+import items.Inventory;
+import items.Item;
 
-public class Room {
+public abstract class Room {
 
     // fields
 
     // associated descriptions of the room
-    private String name;
-    private String description;
-    private Inventory userInventory;
+    protected String name;
+    protected String description;
+    protected Inventory userInventory;
 
     // adjacent rooms to current room
-    private Room north;
-    private Room south;
-    private Room east;
-    private Room west;
+    protected Room north;
+    protected Room south;
+    protected Room east;
+    protected Room west;
 
     // user can pick up items
-    private List<Item> items;
+    protected List<Item> items;
 
     // user can interact with objects
-    private List<RoomObject> objects;
+    protected List<RoomObject> objects;
 
     // constructor
+    /*
     public Room(String name, String description, Room north, Room south, Room east, Room west, List<Item> items,
 	    List<RoomObject> objects) {
 	this.name = name;
@@ -38,35 +39,54 @@ public class Room {
 	this.items = items;
 	this.objects = objects;
     }
+    */
 
     // methods
+    
+    /**
+     * prints the description of the room
+     */
     public void describeRoom() {
 	System.out.println(description);
     } // void describeRoom()
 
     // user actions
 
+    /**
+     * waits a turn, state of room may change depending on the room
+     */
     public void waitTurn() {
 	System.out.println("You wait while the people around you continue to party.");
     } // void waitTurn()
 
+    /**
+     * changes the room the user is in
+     * 
+     * @param direction
+     * @return new room for user to enter
+     */
     public Room goTo(String direction) {
-	if (direction.equals("north")) {
+	if (direction.contains("north")) {
 	    return north;
-	} else if (direction.equals("south")) {
+	} else if (direction.contains("south")) {
 	    return south;
-	} else if (direction.equals("east")) {
+	} else if (direction.contains("east")) {
 	    return east;
-	} else if (direction.equals("west")) {
+	} else if (direction.contains("west")) {
 	    return west;
 	} else {
 	    return null;
 	}
     } // Room goTo(String direction)
 
+    /**
+     * Returns any available dialogue associated with object
+     * 
+     * @param object
+     */
     public void talkTo(String object) {
 	for (RoomObject obj : objects)
-	    if (obj.getName().equals(object)) {
+	    if (object.contains(obj.getName())) {
 		System.out.println("You talk to " + obj.getName() + ".");
 		System.out.println(obj.getDescription());
 		return;
@@ -74,9 +94,14 @@ public class Room {
 	System.out.println("There is no " + object + " to talk to.");
     } // void talkTo(String object)
 
+    /**
+     * adds item to user inventory if it exists in room
+     * 
+     * @param item
+     */
     public void pickUp(String item) {
 	for (Item itm : items) {
-	    if (itm.getName().equals(item)) {
+	    if (item.contains(itm.getName())) {
 		System.out.println("You picked up the " + item + ".");
 		System.out.println(itm.getDescription());
 		items.remove(item);
@@ -87,20 +112,29 @@ public class Room {
 	System.out.println("There is no " + item + " in the " + name + ".");
     } // String pickUp(String item)
 
+    /**
+     * allows the user to attack an object in the room if it exists
+     * 
+     * @param object
+     */
     public void attack(String object) {
 	for (RoomObject obj : objects) {
-	    if (obj.getName().equals(object)) {
-		System.out.println("You attack " + object + ".");
-		System.out.println("The " + obj.getName() + " is attacked");
+	    if (object.contains(obj.getName())) {
+		System.out.println("You attack " + obj.getName() + ".");
 		return;
 	    }
 	}
 	System.out.println("There is no " + object + " to attack.");
     } // void attack(String object)
 
+    /**
+     * allows the user to identify the characteristics of an object in the room
+     * 
+     * @param object
+     */
     public void lookAt(String object) {
 	for (RoomObject obj : objects) {
-	    if (obj.getName().equals(object)) {
+	    if (object.contains(obj.getName())) {
 		System.out.println("You look at " + object + ".");
 		System.out.println(obj.getDescription());
 		return;

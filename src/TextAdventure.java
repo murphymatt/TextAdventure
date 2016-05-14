@@ -1,30 +1,59 @@
-import Environment.Room;
+import environment.Room;
+import items.Inventory;
+import userInput.Command;
+import userInput.Parser;
 
 public class TextAdventure {
 
     public static void main(String[] args) {
-	// TODO Auto-generated method stub
+	// create initial setup
+	Parser parser = new Parser();
+	Inventory inventory = new Inventory();
+	inventory.showInventory();
+	Room current = new Bakery();
+	
+	Command command;
+	String subject;
+	
+	// print greet message
 	greet();
-
+	
+	// infinite loop for command input
+	do {
+	    command = parser.readInput();
+	    switch(command.getAction()) {
+	    string subject = command.getSubject();
+	    // follow command
+	    case WAIT:		current.waitTurn();
+	    			break;
+	    case GO:		current.goTo(subject);
+	    			break;
+	    case TALK:		current.talkTo(subject);
+	    			break;
+	    case PICKUP: 	current.pickUp(subject);
+	    			break;
+	    case USE:		inventory.use(subject);
+	    			break;
+	    case ATTACK:	current.attack(subject);
+	    			break;
+	    case LOOK:		current.lookAt(subject);
+	    			break;
+	    case INVENTORY:	inventory.showInventory();
+	    			break;
+	    case QUIT:		break;
+	    }
+	} while (command.getAction != QUIT);
+	
+	printScore();
     }
 
     public static void greet() {
 	// welcome user
-	System.out.println("Hello, welcome our party text adventure.");
-	System.out.println("Get ready for the time of your life.");
+	System.out.println("Hello, welcome to our party text adventure.");
+	System.out.println("Get ready for the time of your life.\n");
     }
-
-    public static Room[][] buildEnv() {
-	Room[][] env = new Room[2][4];
-
-	// build env
-	env[0][0] = new Room("dance");
-	env[0][1] = new Room("bakery");
-	env[1][0] = new Room("game");
-	env[1][1] = new Room("kitchen");
-	env[2][0] = new Room("porch");
-	env[2][1] = new Room("sixth");
-
-	return env;
+    
+    public static void printScore() {
+	System.out.println("Score:  ");
     }
 }
