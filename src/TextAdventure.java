@@ -1,5 +1,7 @@
 import environment.Room;
 import items.Inventory;
+import items.Item;
+import userInput.Action;
 import userInput.Command;
 import userInput.Parser;
 
@@ -10,7 +12,7 @@ public class TextAdventure {
 	Parser parser = new Parser();
 	Inventory inventory = new Inventory();
 	inventory.showInventory();
-	Room current = new Bakery();
+	Room current = new Room("Room", "First", null, null, null, null, null, null);
 	
 	Command command;
 	String subject;
@@ -21,8 +23,9 @@ public class TextAdventure {
 	// infinite loop for command input
 	do {
 	    command = parser.readInput();
+	    subject = command.getSubject();
+	    
 	    switch(command.getAction()) {
-	    string subject = command.getSubject();
 	    // follow command
 	    case WAIT:		current.waitTurn();
 	    			break;
@@ -30,7 +33,8 @@ public class TextAdventure {
 	    			break;
 	    case TALK:		current.talkTo(subject);
 	    			break;
-	    case PICKUP: 	current.pickUp(subject);
+	    case PICKUP: 	Item pickUp = current.pickUp(subject);
+	    			if (pickUp != null) { inventory.addItem(pickUp); }
 	    			break;
 	    case USE:		inventory.use(subject);
 	    			break;
@@ -42,7 +46,7 @@ public class TextAdventure {
 	    			break;
 	    case QUIT:		break;
 	    }
-	} while (command.getAction != QUIT);
+	} while (command.getAction() != Action.QUIT);
 	
 	printScore();
     }

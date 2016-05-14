@@ -19,6 +19,7 @@ public class Parser {
 
     public Command readInput() {
 	//user inputs text
+	// TODO: fix NullPointerException
 	String input = in.nextLine().toLowerCase();
 	
 	Action action;

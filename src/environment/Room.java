@@ -5,14 +5,13 @@ import java.util.List;
 import items.Inventory;
 import items.Item;
 
-public abstract class Room {
+public class Room {
 
     // fields
 
     // associated descriptions of the room
     protected String name;
     protected String description;
-    protected Inventory userInventory;
 
     // adjacent rooms to current room
     protected Room north;
@@ -27,7 +26,6 @@ public abstract class Room {
     protected List<RoomObject> objects;
 
     // constructor
-    /*
     public Room(String name, String description, Room north, Room south, Room east, Room west, List<Item> items,
 	    List<RoomObject> objects) {
 	this.name = name;
@@ -39,7 +37,6 @@ public abstract class Room {
 	this.items = items;
 	this.objects = objects;
     }
-    */
 
     // methods
     
@@ -99,17 +96,17 @@ public abstract class Room {
      * 
      * @param item
      */
-    public void pickUp(String item) {
+    public Item pickUp(String item) {
 	for (Item itm : items) {
 	    if (item.contains(itm.getName())) {
 		System.out.println("You picked up the " + item + ".");
 		System.out.println(itm.getDescription());
-		items.remove(item);
-		userInventory.addItem(item);
-		return;
+		items.remove(itm);
+		return itm;
 	    }
 	}
 	System.out.println("There is no " + item + " in the " + name + ".");
+	return null;
     } // String pickUp(String item)
 
     /**
