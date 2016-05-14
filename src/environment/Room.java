@@ -2,7 +2,6 @@ package environment;
 
 import java.util.List;
 
-import items.Inventory;
 import items.Item;
 
 public class Room {

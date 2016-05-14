@@ -1,7 +1,5 @@
 package userInput;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import environment.Room;
@@ -14,7 +12,7 @@ public class Parser {
     Scanner in;
 
     public Parser() {
-	Scanner in = new Scanner(System.in);
+	in = new Scanner(System.in);
     }
 
     public Command readInput() {
