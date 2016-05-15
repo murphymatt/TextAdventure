@@ -5,28 +5,23 @@ import java.util.List;
 import items.Item;
 
 public class Bakery extends Room {
-	
-	int i = 0;
-	
-	public Bakery(String name, String description, Room north, Room south, Room east, Room west, List<Item> items,
-			List<RoomObject> objects) {
-		super(
-				"Bakery", 
-				"Theres a lot of dank kush here.", 
-				null,
-				null,
-				null, 
-				null,
-				null, null);
+
+    private int kushCounter = 1;
+    
+    public Bakery(String name, String description, int north, int south, int east, int west, List<Item> items,
+	    List<RoomObject> objects) {
+	super(name, description, north, south, east, west, items, objects);
+	// TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void waitTurn() {
+	if (kushCounter >= 5) {
+	    System.out.println("You suffocate and die.");
+	} else {
+	    kushCounter++;
+	    System.out.println("You breath in the sweet nectar of kush");
 	}
-	
-	@Override
-	public void waitTurn() {
-		if (i >= 5) { System.out.println("You suffocate and die."); }
-		else { 
-			i++;
-			System.out.println("You breath in the sweet nectar of kush"); 
-		}
-	}
+    }
 
 }

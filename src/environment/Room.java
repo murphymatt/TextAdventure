@@ -12,12 +12,8 @@ public class Room {
     private String name;
     private String description;
 
-    // adjacent rooms to current room
-    protected Room north;
-    protected Room south;
-    protected Room east;
-    protected Room west;
-
+    protected int north, south, east, west;
+    
     // user can pick up items
     protected List<Item> items;
 
@@ -25,8 +21,9 @@ public class Room {
     protected List<RoomObject> objects;
 
     // constructor
-    public Room(String name, String description, Room north, Room south, Room east, Room west, List<Item> items,
-	    List<RoomObject> objects) {
+    public Room(String name, String description,
+	    int north, int south, int east, int west,
+	    List<Item> items, List<RoomObject> objects) {
 	this.name = name;
 	this.description = description;
 	this.north = north;
@@ -58,7 +55,7 @@ public class Room {
      * @param direction
      * @return new room for user to enter
      */
-    public Room goTo(String direction) {
+    public int goTo(String direction) {
 	if (direction.contains("north")) {
 	    return north;
 	} else if (direction.contains("south")) {
@@ -68,7 +65,7 @@ public class Room {
 	} else if (direction.contains("west")) {
 	    return west;
 	} else {
-	    return null;
+	    return -1;
 	}
     } // Room goTo(String direction)
 
