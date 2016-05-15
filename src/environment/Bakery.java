@@ -6,6 +6,8 @@ import items.Item;
 
 public class Bakery extends Room {
 	
+	int i = 0;
+	
 	public Bakery(String name, String description, Room north, Room south, Room east, Room west, List<Item> items,
 			List<RoomObject> objects) {
 		super(
@@ -17,7 +19,11 @@ public class Bakery extends Room {
 	
 	@Override
 	public void waitTurn() {
-		System.out.println("You breath in the sweet nectar of cush");
+		if (i >= 5) { System.out.println("You suffocate and die."); }
+		else { 
+			i++;
+			System.out.println("You breath in the sweet nectar of kush"); 
+		}
 	}
 
 }
