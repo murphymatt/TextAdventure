@@ -36,14 +36,14 @@ public class Parser {
 	    action = Action.USE;
 	} else if (input.contains("attack")) {
 	    action = Action.ATTACK;
-	} else if (input.contains("look at")) {
+	} else if (input.contains("look")) {
 	    action = Action.LOOK;
 	} else if (input.contains("inventory")) {
 	    action = Action.INVENTORY;
 	} else if (input.contains("quit")) {
 	    action = Action.QUIT;
 	} else {
-	    System.out.println("Sorry, I don't what " + input + " means.");
+	    System.out.println("Sorry, I don't what \'" + input + "\' means.");
 	    return null;
 	}
 	

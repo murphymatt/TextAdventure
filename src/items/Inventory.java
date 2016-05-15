@@ -31,7 +31,6 @@ public class Inventory {
 		i++;
 	    }
 	}
-	System.out.println();
     } // void showInventory()
 
     public void addItem(Item item) {

@@ -1,9 +1,6 @@
-import environment.Room;
-import items.Inventory;
-import items.Item;
-import userInput.Action;
-import userInput.Command;
-import userInput.Parser;
+import environment.*;
+import items.*;
+import userInput.*;
 
 public class TextAdventure {
 
@@ -11,18 +8,23 @@ public class TextAdventure {
 		// create initial setup
 		Parser parser = new Parser();
 		Inventory inventory = new Inventory();
-		inventory.showInventory();
-		Room current = new Room("Room", "First", null, null, null, null, null, null);
+		Room current = new Bakery("Room", "First", null, null, null, null, null, null);
 
+		Room newRoom;
 		Command command;
 		String subject;
+		int turn = 1;
 
 		// print greet message
 		greet();
 
 		// infinite loop for command input
 		while (true) {
+			
+			// set up user input
+			System.out.print(turn++ + ":  ");
 			command = parser.readInput();
+			
 			if (command != null) {
 				subject = command.getSubject();
 
@@ -32,16 +34,16 @@ public class TextAdventure {
 					current.waitTurn();
 					break;
 				case GO:
-					current.goTo(subject);
+					newRoom = current.goTo(subject);
+					if (newRoom != null) { current = newRoom; }
+					current.describeRoom();
 					break;
 				case TALK:
 					current.talkTo(subject);
 					break;
 				case PICKUP:
 					Item pickUp = current.pickUp(subject);
-					if (pickUp != null) {
-						inventory.addItem(pickUp);
-					}
+					if (pickUp != null) { inventory.addItem(pickUp); }
 					break;
 				case USE:
 					inventory.use(subject);
@@ -59,6 +61,7 @@ public class TextAdventure {
 					break;
 				}
 			}
+			System.out.println();
 			if (command != null && command.getAction() == Action.QUIT) { break; }
 		}
 
@@ -71,6 +74,7 @@ public class TextAdventure {
 		System.out.println("Get ready for the time of your life.\n");
 	}
 
+	// prints ending score
 	public static void printScore() {
 		System.out.println("Score:  ");
 	}
