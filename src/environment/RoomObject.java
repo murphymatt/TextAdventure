@@ -1,6 +1,6 @@
 package environment;
 
-public class RoomObject {
+public abstract class RoomObject {
 
     // fields
     private String name;
@@ -20,4 +20,8 @@ public class RoomObject {
     public String getDescription() {
 	return description;
     }
+    
+    public abstract int talkTo();
+    
+    public abstract int attack();
 }

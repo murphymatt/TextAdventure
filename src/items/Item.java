@@ -1,6 +1,6 @@
 package items;
 
-public class Item {
+public abstract class Item {
 
     // fields
     private String name;
@@ -15,5 +15,5 @@ public class Item {
     // methods
     public String getName() { return name; }
     public String getDescription() { return description; }
-    
+    public abstract int use();
 }

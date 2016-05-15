@@ -7,8 +7,6 @@ import items.Inventory;
 
 public class Parser {
 
-    Room currentRoom;
-    Inventory userInventory;
     Scanner in;
 
     public Parser() {
@@ -28,13 +26,13 @@ public class Parser {
 	    action = Action.WAIT;
 	} else if (input.contains("go")) {
 	    action = Action.GO;
-	} else if (input.contains("talk to")) {
+	} else if (input.contains("talk")) {
 	    action = Action.TALK;
-	} else if (input.contains("pick up")) {
-	    action = Action.PICKUP;
+	} else if (input.contains("pick") || input.contains("take") || input.contains("grab")) {
+	    action = Action.PICK;
 	} else if (input.contains("use")) {
 	    action = Action.USE;
-	} else if (input.contains("attack")) {
+	} else if (input.contains("attack") || input.contains("hunt")) {
 	    action = Action.ATTACK;
 	} else if (input.contains("look")) {
 	    action = Action.LOOK;
