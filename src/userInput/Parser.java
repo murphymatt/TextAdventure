@@ -40,6 +40,8 @@ public class Parser {
 	    action = Action.LOOK;
 	} else if (input.contains("inventory")) {
 	    action = Action.INVENTORY;
+	} else if (input.contains("where") || input.contains("location")) {
+		action = Action.LOCATION;
 	} else if (input.contains("quit")) {
 	    action = Action.QUIT;
 	} else {

@@ -37,7 +37,9 @@ public class TextAdventure {
 					newRoom = current.goTo(subject);
 					if (newRoom != null) { 
 						current = newRoom;
-						current.describeRoom();
+						System.out.println(current.getDescription());
+					} else {
+						System.out.println("You cannot go that way.");
 					}
 					break;
 				case TALK:
@@ -59,6 +61,8 @@ public class TextAdventure {
 				case INVENTORY:
 					inventory.showInventory();
 					break;
+				case LOCATION:
+					System.out.println("You are in the " + current.getName());
 				case QUIT:
 					break;
 				}

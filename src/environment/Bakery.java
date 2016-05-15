@@ -13,7 +13,10 @@ public class Bakery extends Room {
 		super(
 				"Bakery", 
 				"Theres a lot of dank kush here.", 
-				null, null, null, null, 
+				null,
+				null,
+				null, 
+				null,
 				null, null);
 	}
 	

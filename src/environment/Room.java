@@ -9,8 +9,8 @@ public class Room {
     // fields
 
     // associated descriptions of the room
-    protected String name;
-    protected String description;
+    private String name;
+    private String description;
 
     // adjacent rooms to current room
     protected Room north;
@@ -39,12 +39,9 @@ public class Room {
 
     // methods
     
-    /**
-     * prints the description of the room
-     */
-    public void describeRoom() {
-	System.out.println(description);
-    } // void describeRoom()
+    public String getName() { return name; }
+    
+    public String getDescription() { return description; }
 
     // user actions
 
