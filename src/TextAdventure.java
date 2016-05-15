@@ -35,8 +35,10 @@ public class TextAdventure {
 					break;
 				case GO:
 					newRoom = current.goTo(subject);
-					if (newRoom != null) { current = newRoom; }
-					current.describeRoom();
+					if (newRoom != null) { 
+						current = newRoom;
+						current.describeRoom();
+					}
 					break;
 				case TALK:
 					current.talkTo(subject);
