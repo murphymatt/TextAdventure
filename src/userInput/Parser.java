@@ -43,7 +43,7 @@ public class Parser {
 	} else if (input.contains("quit")) {
 	    action = Action.QUIT;
 	} else {
-	    System.out.println("Sorry, I don't know how to " + input + ".");
+	    System.out.println("Sorry, I don't what " + input + " means.");
 	    return null;
 	}
 	
