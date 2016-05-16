@@ -5,7 +5,12 @@ import java.util.List;
 
 import items.*;
 
-/* creates environment for the game */
+/**
+ * creates environment for game.
+ * Instantiates rooms with items and objects in appropriate locations in house array
+ * @author mattmurphy
+ *
+ */
 public class House {
 
     private Room[] rooms;
@@ -13,7 +18,7 @@ public class House {
     public House() {
 	rooms = new Room[6];
 	
-	// create separate lists for items and roomobjects before instantiating each room
+	// create separate lists for items and room objects before instantiating each room
 	
 	Person pm = new Person("person", "A CS professor, he appears uncomcfortable at this party.",0);
 	
@@ -21,7 +26,8 @@ public class House {
 	List<Item> dItems = new ArrayList<>();
 	dItems.add(new Hammer("hammer", "It's weighty and can probably break down doors."));
 	List<RoomObject> dObjects = new ArrayList<>();
-	rooms[0] = new Dance("Dance Room", "There's some loud music playing. It sucks. For some reason, there's a hammer lying on the couch.",
+	rooms[0] = new Dance("Dance Room", "There's some loud music playing. "
+		+ "It sucks. For some reason, there's a hammer lying on the couch.",
 		-1, 2, 1, -1, dItems, dObjects);
 	
 	// Bakery
@@ -33,7 +39,7 @@ public class House {
 	
 	// Game
 	List<Item> gItems = new ArrayList<>();
-	gItems.add(new SoloCup("cup", "it's red and filled with liquid."));
+	gItems.add(new SoloCup("cup", "It's red and filled with liquid."));
 	List<RoomObject> gObjects = new ArrayList<>();
 	gObjects.add(new Student("student", "Hat backwards, cup in hand. A very attackable person"));
 	rooms[2] = new Game("Game Room", "There's some people playing die in the room here."
@@ -59,10 +65,16 @@ public class House {
 	// Sixth
 	List<Item> sItems = new ArrayList<>();
 	List<RoomObject> sObjects = new ArrayList<>();
-	rooms[5] = new Sixth("Sixth Ave", "Oh bummer, you got hit by security asleep at the wheel. You are really dead.",
+	rooms[5] = new Sixth("Sixth Ave", "Oh bummer, you got hit by security asleep at the wheel."
+		+ " You are really dead.",
 		-1, -1, -1, -1, sItems, sObjects);
     }
     
+    /**
+     * 
+     * @param index
+     * @return room object at a given index
+     */
     public Room getRoom(int index) {
 	return rooms[index];
     }

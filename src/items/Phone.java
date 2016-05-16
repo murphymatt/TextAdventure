@@ -2,16 +2,20 @@ package items;
 
 public class Phone extends Item {
 
-	public Phone(String name, String description) {
-		super(name, description);
-		// TODO Auto-generated constructor stub
-	}
+    // constructor
+    public Phone(String name, String description) {
+	super(name, description);
+    }
 
-	@Override
-	public int use() {
-		System.out.println("You call you mom to pick you up.");
-		System.out.println("You leave the party and go home to get a good night's sleep.");
-		return -1;
-	}
+    /**
+     * usage of phone ends the game for user
+     * @return regressive item status
+     */
+    @Override
+    public int use() {
+	System.out.println("You call you mom to pick you up.");
+	System.out.println("You leave the party and go home to get a good night's sleep.");
+	return -1;
+    }
 
 }

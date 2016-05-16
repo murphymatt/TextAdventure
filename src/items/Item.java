@@ -13,7 +13,12 @@ public abstract class Item {
     }
     
     // methods
+    // getters
     public String getName() { return name; }
     public String getDescription() { return description; }
+    /**
+     * implemenations vary based on item object.
+     * @return
+     */
     public abstract int use();
 }

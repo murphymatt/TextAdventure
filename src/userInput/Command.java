@@ -12,6 +12,7 @@ public class Command {
 	this.subject = subject;
     }
     
+    // getters and setters
     public Action getAction() { return action; }
     public void setAction(Action action) { this.action = action; }
     public String getSubject() { return subject; }

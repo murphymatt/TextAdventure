@@ -1,5 +1,13 @@
 package environment;
 
+/**
+ * 
+ * @author mattmurphy
+ *
+ * person roomObject which contains dialogue that progresses as user continues to talk.
+ * opens door for user to leave bakery.
+ * appears again in Porch
+ */
 public class Person extends RoomObject {
 
 	private String[] dialogue;
